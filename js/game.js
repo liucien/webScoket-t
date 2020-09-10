@@ -308,7 +308,7 @@ var Game = function () {
     this.right = right;
     this.rotate = rotate;
     this.fall = function () {
-        while (down()) ;
+        while (down());
     }
     this.fixed = fixed;
     this.performNext = performNext;
