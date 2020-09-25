@@ -17,16 +17,16 @@ var Local = function (socket) {
                 socket.emit('rotate');
             } else if (e.keyCode === 39) {//right
                 game.right();
-                 socket.emit('right');
+                socket.emit('right');
             } else if (e.keyCode === 40) {//down
                 game.down();
-                 socket.emit('down');
+                socket.emit('down');
             } else if (e.keyCode === 37) {//left
                 game.left();
-                 socket.emit('left');
+                socket.emit('left');
             } else if (e.keyCode === 32) {//space
                 game.fall();
-                 socket.emit('fall');
+                socket.emit('fall');
             }
         }
     }
@@ -42,8 +42,8 @@ var Local = function (socket) {
 
             if (line) {
                 game.addScore(line)
-                socket.emit('line',line)
-                if(line > 1){
+                socket.emit('line', line)
+                if (line > 1) {
                     var bottomLines = generataBottomLine(line);
                     socket.emit('bottomLines', bottomLines)
                 }
@@ -60,9 +60,9 @@ var Local = function (socket) {
                 var d = generateDir()
                 game.performNext(t, d);
 
-                socket.emit('next',{type:t,dir:d})
+                socket.emit('next', { type: t, dir: d })
             }
-        }else{
+        } else {
             socket.emit('down')
         }
     }
@@ -87,7 +87,7 @@ var Local = function (socket) {
             timeCount = 0;
             time = time + 1;
             game.setTime(time);
-            socket.emit('time',time)
+            socket.emit('time', time)
             // if(time % 10 == 0){
             //     game.addTailLines(generataBottomLine(1))
             // }
@@ -110,14 +110,14 @@ var Local = function (socket) {
             nextDiv: document.getElementById('local_next'),
             timeDiv: document.getElementById('local_time'),
             scoreDiv: document.getElementById('local_score'),
-            resultDiv:document.getElementById('local_gameover')
+            resultDiv: document.getElementById('local_gameover')
         }
         game = new Game();
         var type = generateType();
         var dir = generateDir();
         game.init(doms, type, dir);
 
-        socket.emit('init',{type:type,dir:dir})
+        socket.emit('init', { type: type, dir: dir })
 
         bindKeyEvent();
 
@@ -125,7 +125,7 @@ var Local = function (socket) {
         var d = generateDir()
         game.performNext(t, d);
 
-        socket.emit('next',{type:t,dir:d})
+        socket.emit('next', { type: t, dir: d })
 
         timer = setInterval(move, INTERVAL)
     }
@@ -139,7 +139,7 @@ var Local = function (socket) {
         document.onkeydown = null;
     }
 
-    socket.on('start',function () {
+    socket.on('start', function () {
         document.getElementById('waiting').innerHTML = '';
         start();
     })
@@ -155,8 +155,8 @@ var Local = function (socket) {
         stop();
     })
 
-    socket.on('bottomLines',function (data) {
+    socket.on('bottomLines', function (data) {
         game.addTailLines(data);
-        socket.emit('addTailLines',data)
+        socket.emit('addTailLines', data)
     })
 }

@@ -6,7 +6,7 @@ var Remote = function (socket) {
         })
 
         socket.on('next', function (data) {
-            game.performNext(data.type,data.dir)
+            game.performNext(data.type, data.dir)
         })
 
         socket.on('rotate', function (data) {
@@ -42,7 +42,7 @@ var Remote = function (socket) {
             game.gameOver(data)
         })
 
-        socket.on('addTaiLines',function(data){
+        socket.on('addTaiLines', function (data) {
             game.addTaiLines(data);
         });
 
@@ -54,7 +54,7 @@ var Remote = function (socket) {
             nextDiv: document.getElementById('remote_next'),
             timeDiv: document.getElementById('remote_time'),
             scoreDiv: document.getElementById('remote_score'),
-            resultDiv:document.getElementById('remote_gameover')
+            resultDiv: document.getElementById('remote_gameover')
         }
         game = new Game();
         game.init(doms, type, dir);
