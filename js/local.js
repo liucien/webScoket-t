@@ -50,6 +50,7 @@ var Local = function (socket) {
             }
 
             var gameOver = game.checkGameOver();
+            
             if (gameOver) {
                 game.gameOver(false);
                 document.getElementById('remote_gameover').innerHTML = '你赢了';

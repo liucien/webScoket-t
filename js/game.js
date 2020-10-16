@@ -100,6 +100,7 @@ var Game = function () {
             }
         }
         return true
+
     }
 
     //清除数据
@@ -181,7 +182,8 @@ var Game = function () {
                 }
             }
         }
-        refreshDiv(gameData, gameDivs)
+        refreshDiv(gameData, gameDivs);
+        
     }
 
     //消行

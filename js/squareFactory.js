@@ -61,6 +61,7 @@ var Square2 = function () {
         ]
     ]
 }
+
 Square2.prototype = Square.prototype;
 
 var Square3 = function () {
